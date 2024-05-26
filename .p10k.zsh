@@ -232,7 +232,10 @@
   # Default current directory color.
   # typeset -g POWERLEVEL9K_DIR_FOREGROUND=31
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=#333333
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=#5588AA
+  # typeset -g POWERLEVEL9K_DIR_BACKGROUND=#5588AA
+  # typeset -g POWERLEVEL9K_DIR_BACKGROUND=#de935f
+  # pink
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=#ED8282
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -368,6 +371,11 @@
   # typeset -g POWERLEVEL9K_DIR_PREFIX='%248Fin '
 
   #####################################[ vcs: git status ]######################################
+  # Background
+
+  local git_background=238
+  typeset -g POWERLEVEL9K_VCS_BACKGROUND=$git_background
+  
   # Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '
 
@@ -383,6 +391,12 @@
   #
   # VCS_STATUS_* parameters are set by gitstatus plugin. See reference:
   # https://github.com/romkatv/gitstatus/blob/master/gitstatus.plugin.zsh.
+
+  local git_meta="#FF0000"
+  local git_no_changes="#AAAAAA"
+  local git_modified="#FF00FF"
+  local git_untracked_changes="#FFFF00"
+  local git_conflicted="#FF0000"
   function my_git_formatter() {
     emulate -L zsh
 
@@ -393,22 +407,28 @@
       return
     fi
 
-    if (( $1 )); then
-      # Styling for up-to-date Git status.
-      local       meta='%248F'  # grey foreground
-      # local       meta='%F{#FFFFFF}'  # grey foreground
-      local      clean='%F{#FFFF00}'   # green foreground
-      local   modified='%F{#FFFFFF}'  # yellow foreground
-      local  untracked='%39F'   # blue foreground
-      local conflicted='%196F'  # red foreground
-    else
-      # Styling for incomplete and stale Git status.
-      local       meta='%244F'  # grey foreground
-      local      clean='%244F'  # grey foreground
-      local   modified='%244F'  # grey foreground
-      local  untracked='%244F'  # grey foreground
-      local conflicted='%244F'  # grey foreground
-    fi
+
+    local meta=$git_meta
+    local clean=$git_no_changes
+    local modified=$git_modified
+    local untracked=$git_untracked_changes
+    local conflicted=$git_conflicted
+
+    # if (( $1 )); then
+    #   # Styling for up-to-date Git status.
+    #   local       meta='%F{$git_meta}'  # foreground for meta information
+    #   local      clean='%F{$git_no_changes}'   #  foreground for no changes
+    #   local   modified=''  #  foreground for staged changes
+    #   local  untracked='%F{$git_untracked_changes}'   # foreground for untracked files
+    #   local conflicted='%F{$git_conflicted}'  # foreground for merge conflicts
+    # else
+    #   # Styling for incomplete and stale Git status.
+    #   local       meta='%F{#00FFFF}'  # foreground
+    #   local      clean='%F{#00FFFF}'  # foreground
+    #   local   modified='%F{#00FFFF}'  # foreground
+    #   local  untracked='%F{#00FFFF}'  # foreground
+    #   local conflicted='%F{#00FFFF}'  # foreground
+    # fi
 
     local res
 
@@ -508,7 +528,7 @@
 
   # Icon color.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=76
-  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=#FFFFFF
+  typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=$git_icon_color
   typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=244
   # Custom icon.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION='⭐'
@@ -522,9 +542,12 @@
 
   # These settings are used for repositories other than Git or when gitstatusd fails and
   # Powerlevel10k has to fall back to using vcs_info.
-  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=76
-  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=76
-  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=178
+  local git_debug_no_changes=#00FF00
+  local git_debug_staged_changes=#00FF00
+  local git_debug_untracked_changes=#00FF00
+  typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$git_debug_no_changes # debug colour
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$git_debug_untracked_changes # debug colour
+  typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$git_debug_staged_changes # debug colour
 
   ##########################[ status: exit code of the last command ]###########################
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
@@ -939,7 +962,10 @@
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
-  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=37
+  # typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=37
+  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=#222222
+  # background 
+  typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=#74ABB2
 
   # Anaconda segment format. The following parameters are available within the expansion.
   #
