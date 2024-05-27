@@ -61,6 +61,10 @@
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
+
+    ram
+    swap
+
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
@@ -414,6 +418,7 @@
     local untracked=$git_untracked_changes
     local conflicted=$git_conflicted
 
+    # $1 
     # if (( $1 )); then
     #   # Styling for up-to-date Git status.
     #   local       meta='%F{$git_meta}'  # foreground for meta information
@@ -543,7 +548,7 @@
   # These settings are used for repositories other than Git or when gitstatusd fails and
   # Powerlevel10k has to fall back to using vcs_info.
   local git_debug_no_changes=#00FF00
-  local git_debug_staged_changes=#00FF00
+  local git_debug_staged_changes=#FF00FF
   local git_debug_untracked_changes=#00FF00
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$git_debug_no_changes # debug colour
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$git_debug_untracked_changes # debug colour
