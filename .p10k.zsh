@@ -146,6 +146,8 @@
   local orange=#EA9258
   local yellow=#EDB34F
 
+  local dull_red=#CC241D
+
   local general_foreground=#333333
 
   local directory_background=$pink
@@ -155,8 +157,8 @@
   local git_meta=$general_foreground
   local git_no_changes=$general_foreground
   local git_modified=$general_foreground
-  local git_untracked_changes=#FFAA00
-  local git_conflicted="#FF0000"
+  local git_untracked_changes=$general_foreground
+  local git_conflicted=$dull_red
 
   local ram_background=$peach
   local ram_foreground=$general_foreground
@@ -567,7 +569,8 @@
   # Icon color.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=76
   typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_COLOR=$git_icon_color
-  typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=244
+  # typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=244
+  typeset -g POWERLEVEL9K_VCS_LOADING_VISUAL_IDENTIFIER_COLOR=$git_icon_color
   # Custom icon.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
