@@ -130,6 +130,45 @@
     # example               # example user-defined segment (see prompt_example function below)
   )
 
+  # =========================[ Variables ]=========================
+
+  # Saturated
+  # local pink=#DF4896
+  # local blush=#F05783
+  # local peach=#f47963
+  # local orange=#F7914C
+  # local yellow=#FBB73F
+
+  # Desaturated
+  local pink=#D45496
+  local blush=#E56287
+  local peach=#E97F6D
+  local orange=#EA9258
+  local yellow=#EDB34F
+
+  local general_foreground=#333333
+
+  local directory_background=$pink
+
+  local git_background=$blush
+  local git_icon_color=$general_foreground
+  local git_meta=$general_foreground
+  local git_no_changes=$general_foreground
+  local git_modified=$general_foreground
+  local git_untracked_changes=#FFAA00
+  local git_conflicted="#FF0000"
+
+  local ram_background=$peach
+  local ram_foreground=$general_foreground
+
+  local swap_background=$orange
+  local swap_foreground=$general_foreground
+
+  local anaconda_background=$yellow
+  local anaconda_foreground=$general_foreground
+
+  # =========================[ Segment colors ]=========================
+
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
@@ -235,11 +274,11 @@
   ##################################[ dir: current directory ]##################################
   # Default current directory color.
   # typeset -g POWERLEVEL9K_DIR_FOREGROUND=31
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=#333333
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=$general_foreground
   # typeset -g POWERLEVEL9K_DIR_BACKGROUND=#5588AA
   # typeset -g POWERLEVEL9K_DIR_BACKGROUND=#de935f
   # pink
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=#ED8282
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=$directory_background
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
@@ -376,8 +415,6 @@
 
   #####################################[ vcs: git status ]######################################
   # Background
-
-  local git_background=238
   typeset -g POWERLEVEL9K_VCS_BACKGROUND=$git_background
   
   # Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
@@ -396,11 +433,7 @@
   # VCS_STATUS_* parameters are set by gitstatus plugin. See reference:
   # https://github.com/romkatv/gitstatus/blob/master/gitstatus.plugin.zsh.
 
-  local git_meta="#FF0000"
-  local git_no_changes="#AAAAAA"
-  local git_modified="#FF00FF"
-  local git_untracked_changes="#FFFF00"
-  local git_conflicted="#FF0000"
+
   function my_git_formatter() {
     emulate -L zsh
 
@@ -547,9 +580,9 @@
 
   # These settings are used for repositories other than Git or when gitstatusd fails and
   # Powerlevel10k has to fall back to using vcs_info.
-  local git_debug_no_changes=#00FF00
-  local git_debug_staged_changes=#FF00FF
-  local git_debug_untracked_changes=#00FF00
+  local git_debug_no_changes=$git_no_changes
+  local git_debug_staged_changes=$git_modified
+  local git_debug_untracked_changes=$git_untracked_changes
   typeset -g POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$git_debug_no_changes # debug colour
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$git_debug_untracked_changes # debug colour
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$git_debug_staged_changes # debug colour
@@ -839,13 +872,18 @@
 
   ######################################[ ram: free RAM ]#######################################
   # RAM color.
-  typeset -g POWERLEVEL9K_RAM_FOREGROUND=66
+  # typeset -g POWERLEVEL9K_RAM_FOREGROUND=66
+  typeset -g POWERLEVEL9K_RAM_FOREGROUND=$ram_foreground
+  typeset -g POWERLEVEL9K_RAM_BACKGROUND=$ram_background
   # Custom icon.
   # typeset -g POWERLEVEL9K_RAM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #####################################[ swap: used swap ]######################################
   # Swap color.
-  typeset -g POWERLEVEL9K_SWAP_FOREGROUND=96
+
+  # typeset -g POWERLEVEL9K_SWAP_FOREGROUND=96
+  typeset -g POWERLEVEL9K_SWAP_FOREGROUND=$swap_foreground
+  typeset -g POWERLEVEL9K_SWAP_BACKGROUND=$swap_background
   # Custom icon.
   # typeset -g POWERLEVEL9K_SWAP_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -968,9 +1006,11 @@
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # Anaconda environment color.
   # typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=37
-  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=#222222
+  # typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=#222222
+  typeset -g POWERLEVEL9K_ANACONDA_FOREGROUND=$anaconda_foreground
   # background 
-  typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=#74ABB2
+  # typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=#74ABB2
+  typeset -g POWERLEVEL9K_ANACONDA_BACKGROUND=$anaconda_background
 
   # Anaconda segment format. The following parameters are available within the expansion.
   #
