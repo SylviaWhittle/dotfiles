@@ -148,3 +148,5 @@ eval "$(pyenv virtualenv-init -)"
 #unset __conda_setup
 # <<< conda initialize <<<
 
+# echo "Ran zshrc!"
+
