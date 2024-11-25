@@ -117,6 +117,7 @@ alias cddata="cd ~/topo_data"
 alias cdgk="cd ~/Documents/GitKraken"
 alias ls="eza --icons"
 alias cat="bat --style=auto"
+alias listpath="echo '${PATH//:/\n}'"
 
 # nnn file explorer
 alias n3="nnn -d -C -D -i"
