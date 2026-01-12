@@ -121,10 +121,10 @@ alias ls="eza --icons"
 alias cat="bat --style=auto"
 alias listpath="echo '${PATH//:/\n}'"
 
-# nnn file explorer
-alias n3="nnn -d -C -D -i"
-export NNN_PLUG='p:preview-tui'
-export NNN_FIFO=/tmp/nnn.fifo
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+# initialise zoxide
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
