@@ -4,5 +4,20 @@ cursor-color = #DDDDDD
 
 background-opacity = 
 
-
+### shaders ###
+## cursor ##
+# custom-shader = shaders/cursor_synesthaxia(tweened).glsl
+custom-shader = shaders/cursor_smear_fade.glsl
+# custom-shader = shaders/party_sparks.glsl
+#custom-shader = shaders/sparks.glsl
+#custom-shader = shaders/shake.glsl
+#custom-shader = shaders/blaze_sparks.glsl
+#custom-shader = shaders/cursor_smear_gradient.glsl
+#custom-shader = shaders/cursor_smear_rainbow.glsl
+## general ##
+#custom-shader = shaders/retro-terminal.glsl
+#custom-shader = shaders/glitchy.glsl
+#custom-shader = shaders/tft.glsl
+#custom-shader = shaders/in-game-crt.glsl 
+#custom-shader = shaders/bloom.glsl 
 
